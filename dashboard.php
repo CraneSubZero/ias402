@@ -68,6 +68,12 @@ if (!isset($_SESSION['logged_in'])) {
             <img src="icons/computer.png" alt="Computer">
             <span>My Computer</span>
         </div>
+        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+        <div class="desktop-icon" onclick="window.location.href='admin.php'">
+            <img src="icons/admin.png" alt="Admin">
+            <span>Admin Panel</span>
+        </div>
+        <?php endif; ?>
     </div>
 
     <!-- Main Window -->
