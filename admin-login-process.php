@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'csrf.php';
-require_once 'db_connect.php';
+require_once 'Db.php';
 
 // Verify CSRF token
 if (!isset($_POST['csrf_token']) || !verifyToken($_POST['csrf_token'])) {
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Connect to the admin database
-        $stmt = $pdo->prepare("SELECT * FROM admin_users WHERE username = ?");
+        $stmt = $conn->prepare("SELECT * FROM admin_users WHERE username = ?");
         $stmt->execute([$admin_username]);
         $admin = $stmt->fetch();
 
